@@ -3,12 +3,12 @@
 # @Author: luke
 # @Date:   2017-10-16 14:05:11
 # @Last Modified by:   luke
-# @Last Modified time: 2017-10-16 16:24:14
+# @Last Modified time: 2018-01-25 22:53:16
 import numpy as np
 import math
 import argparse
 
-BOLTZMAN = 1.38e-23
+BOLTZMAN = 1.38065e-23
 
 def get_options():
     parser = argparse.ArgumentParser(description='calculate johnson-nyquist noise in resistors and caps')
@@ -32,12 +32,12 @@ if __name__ == "__main__":
     OPTIONS = get_options()
 
     if OPTIONS.type == 'res':
-        vrms = resistor_vrms(tempC_to_tempK(float(OPTIONS.temperature)), float(OPTIONS.value), float(OPTIONS.bandwidth))
-        vpp = vrms_to_vpp(vrms)
-        print(f'[{OPTIONS.value} Ohms]\teVrms:{vrms}, eVpp:{vpp}')
+        uVrms = resistor_vrms(tempC_to_tempK(float(OPTIONS.temperature)), float(OPTIONS.value), float(OPTIONS.bandwidth)) * 1e6
+        uVpp = vrms_to_vpp(uVrms)
+        print(f'Res:{OPTIONS.value} Ohms, BW:{OPTIONS.bandwidth} Hz, eVrms:{uVrms:.6f} uV, eVpp:{uVpp:.6f} uV')
     elif OPTIONS.type == 'iin':
-        vrms = float(OPTIONS.value)*float(OPTIONS.iin) * math.sqrt(float(OPTIONS.bandwidth))
-        vpp = vrms_to_vpp(vrms)
-        print(f'[{OPTIONS.iin}A/rt-Hz]\teVrms:{vrms}, eVpp:{vpp}')
+        uVrms = float(OPTIONS.value)*float(OPTIONS.iin) * math.sqrt(float(OPTIONS.bandwidth)) * 1e6
+        uVpp = vrms_to_vpp(uVrms)
+        print(f'[{OPTIONS.iin}A/rt-Hz]\teVrms:{uVrms}, eVpp:{uVpp}')
     else:
         print('option not implemented')

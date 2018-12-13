@@ -3,20 +3,15 @@
 ##  @file:                  rc2.py
 #   @par:
 #   @author:                Luke Gary
-#   @company:               Biomeme, Inc
+#   @company:
 #   @date:                  2018/12/12
 #   @brief:
 #   @verbatim:
 
 ################################################################
 # @copyright
-#   Copyright 2018 [Biomeme, Inc] as an  unpublished work.
+#   Copyright 2018 [Luke Gary] as an  unpublished work.
 #   All Rights Reserved.
-#
-# @license The information contained herein is confidential
-#   property of [Biomeme, Inc]. The user, copying, transfer or
-#   disclosure of such information is prohibited except
-#   by express written agreement with [Biomeme, Inc].
 ################################################################
 #/
 import numpy

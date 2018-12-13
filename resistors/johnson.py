@@ -1,9 +1,25 @@
 #!/usr/bin/env python
-# -*- coding: utf-8 -*-
-# @Author: luke
-# @Date:   2017-10-16 14:05:11
-# @Last Modified by:   luke
-# @Last Modified time: 2018-11-16 15:31:08
+# python 3
+##  @file:                  johnson.py
+#   @par:
+#   @author:                Luke Gary
+#   @company:               Biomeme, Inc
+#   @date:                  2018/11/26
+#   @brief:
+#   @verbatim:
+
+################################################################
+# @copyright
+#   Copyright 2018 Rye Effects Research as an  unpublished work.
+#   All Rights Reserved.
+#
+# @license The information contained herein is confidential
+#   property of Rye Effects Research. The user, copying, transfer or
+#   disclosure of such information is prohibited except
+#   by express written agreement with Rye Effects Research.
+################################################################
+#/
+
 import numpy as np
 import math
 import argparse
@@ -36,7 +52,7 @@ if __name__ == "__main__":
         for r in OPTIONS.value:
             uVrms = resistor_vrms(tempC_to_tempK(float(OPTIONS.temperature)), float(r), float(OPTIONS.bandwidth)) * 1e6
             uVpp = vrms_to_vpp(uVrms)
-            print(f'Res:{r} Ohms, BW:{OPTIONS.bandwidth} Hz, eVrms:{uVrms:.6f} uV, eVpp:{uVpp:.6f} uV')
+            print(f'Res:{r:6} Ohms, BW:{OPTIONS.bandwidth:4} Hz, eVrms:{uVrms:.6f} uV, eVpp:{uVpp:.6f} uV')
             rmss.append(uVrms)
         total = 0
         for v in rmss:

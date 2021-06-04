@@ -55,7 +55,7 @@ class CombFilter:
         sin = math.sin(omega*self.order)
 
         magnitude = abs(math.sqrt((1+self.gain*cos)**2 + (self.gain*sin)**2))
-        phase = safe_atan((self.gain*sin)/(1+self.gain*cos))
+        phase = math.atan((self.gain*sin)/(1+self.gain*cos))
 
         return (magnitude, phase)
 
@@ -128,7 +128,7 @@ class DF2TBiquad:
         magnitude = abs(numhz/demhz)
 
         # calculate phase angle
-        phase = safe_atan(numy/numx) - safe_atan(demy/demx)
+        phase = math.atan(numy/numx) - math.atan(demy/demx)
 
         return (magnitude, phase)
 

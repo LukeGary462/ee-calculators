@@ -23,7 +23,7 @@ a python module that shows their work!
 """
 import math
 from typing import Tuple
-from utils import linspace, safe_log10
+from utils import linspace, safe_log10, APPROX_ZERO
 
 
 class CombFilter:
@@ -53,10 +53,14 @@ class CombFilter:
         omega = 2*math.pi * (freq/sample_rate)
         cos = math.cos(omega*self.order)
         sin = math.sin(omega*self.order)
-
-        magnitude = abs(math.sqrt((1+self.gain*cos)**2 + (self.gain*sin)**2))
-        phase = math.atan((self.gain*sin)/(1+self.gain*cos))
-
+        
+        if self.gain == 0:
+            magnitude = 1.0
+            phase = 0
+        else: 
+            magnitude = abs(math.sqrt((1+self.gain*cos)**2 + (self.gain*sin)**2))
+            phase = math.atan((self.gain*sin)/(1+self.gain*cos))
+    
         return (magnitude, phase)
 
     def reset(self, initial_condition=None):
@@ -121,23 +125,20 @@ class DF2TBiquad:
         numy = self.B[1]*sin1 - self.B[2]*sin2
         demx = 1.0/self.A[0] - self.A[1]*cos1 - self.A[2]*cos2
         demy = self.A[1]*sin1 - self.A[2]*sin2
-
+    
         # calculate magnitude
         numhz = math.sqrt(numx**2 + numy**2)
         demhz = math.sqrt(demx**2 + demy**2)
         magnitude = abs(numhz/demhz)
 
         # calculate phase angle
-        phase = math.atan(numy/numx) - math.atan(demy/demx)
+        safe_numx = APPROX_ZERO if numx == 0.0 else numx
+        safe_numy = APPROX_ZERO if numy == 0.0 else numy
+        safe_demx = APPROX_ZERO if demx == 0.0 else demx
+        safe_demy = APPROX_ZERO if demy == 0.0 else demy
+        phase = math.atan(safe_numy/safe_numx) - math.atan(safe_demy/safe_demx)
 
         return (magnitude, phase)
-
-    def reset(self, initial_conditions=None):
-        '''reset biquad'''
-        if initial_conditions is None:
-            self._states = [0.0]*3
-        else:
-            self._states = initial_conditions[0:3]
 
     def update(self, sample):
         '''update biquad with new sample'''
@@ -151,18 +152,29 @@ class DF2TBiquad:
         # 3mult, 2add
         # --> 3rd mult is so we can have a0
         self._states.append(
-            self.A[0]*(sample - self.A[1]*self._states[-1]) - self.A[2]*self._states[-2]
+            self.A[0]*\
+            (sample - self.A[1]*self._states[-1]) -\
+            self.A[2]*self._states[-2]
         )
         self._states.pop(1)
+        # 3mult, 2add
         self._output = \
-            self.B[0]*self._states[-1] + \
-            self.B[1]*self._states[-2] + \
-            self.B[2]*self._states[-3]
+            self.B[0]*self.states[-1] + \
+            self.B[1]*self.states[-2] + \
+            self.B[2]*self.states[-3]
+
 
     @property
     def output(self):
         '''get output'''
         return self._output
+
+    def reset(self, initial_conditions=None):
+        '''reset biquad'''
+        if initial_conditions is None:
+            self._states = [0.0]*3
+        else:
+            self._states = initial_conditions[0:3]
 
 class SAKNetwork:
     """
@@ -193,7 +205,7 @@ class SAKNetwork:
         ]
 
         # calculate magnitude
-        magnitude = 20*safe_log10(responses[0][0]) + 20*safe_log10(responses[1][0])
+        magnitude = responses[0][0] * responses[1][0]
         # calculate phase angle
         phase = responses[0][1] + responses[1][1]
 
@@ -213,7 +225,7 @@ class SAKNetwork:
         :returns:   ([freq], [abs(magnitude)], [phase angle])
         :rtype:     Tuple
         """
-        # logy = options.get('logy', True)
+        logy = options.get('logy', False)
         num_steps = options.get('num_steps', 1000)
         max_freq = freq_range[-1]
         if freq_range[-1] >= (sample_rate/2):
@@ -222,12 +234,15 @@ class SAKNetwork:
 
         results = ([], [], [])
         for frequency in frequencies:
+            if frequency == 0:
+                continue
             magnitude, phase_angle = self.evaluate_at_frequency(frequency, sample_rate)
-            # if logy:
-            #     magnitude = 20*safe_log10(magnitude)
+            magnitude = 20*math.log10(magnitude)
             results[0].append(frequency)
             results[1].append(magnitude)
             results[2].append(phase_angle)
+
+        return results
 
 
     def update(self, sample):

@@ -29,7 +29,33 @@ def linspace(start, stop, step=100):
     diff = (float(stop) - start)/(step - 1)
     return [diff * i + start for i in range(step)]
 
+def min_clip(value, minval):
+    if isinstance(value, (int, float)):
+        value = [value]
+
+    result = [
+        minval if x <= 0  else x 
+        for x in value
+    ]
+
+    if len(result) == 1:
+        return result[0]
+    return result
+
+
 def safe_log10(operand, minval=APPROX_ZERO):
     '''safe base 10 log'''
-    return math.log10(operand.clip(min=minval))
+    return math.log10(min_clip(operand, minval))
+
+
+if __name__ == '__main__':
+    import numpy as np
+    print(min_clip(0.0, 0.01))
+    print(min_clip(0, 0.01))
+    print(min_clip(-0.0, 0.01))
+    print(min_clip(-0, 0.01))
+    print(min_clip([-1, 0, 1, 2], 0.01))
+    print(min_clip([-1.0, 0.0, 1.0, 2.0], 0.01))
+    print(min_clip(np.asarray([-1, 0, 1, 2]), 0.01))
+    print(min_clip(np.asarray([-1.0, 0.0, 1.0, 2.0]), 0.01))
 

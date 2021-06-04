@@ -19,6 +19,7 @@
 { high-level module description }
 """
 import numpy as np
+import windowing
 
 class Goertzel:
     """
@@ -26,6 +27,8 @@ class Goertzel:
     """
     def __init__(self):
         self.states = [0] * 3
+        self.target_freq = 0
+        self.sample_rate = 0
         self.k = 0
         self.omega = 0
         self.coeff = 0
@@ -35,11 +38,11 @@ class Goertzel:
     @staticmethod
     def calculate_nominal_buffer_size(freq_target, freq_sample, discr_hz, max_samples=10000):
         '''calculate smallest Block size to get freq discrimintaion (discr_hz)'''
-        block_size = max_samples
-        for temp_block in range(1, max_samples):
-            bin_size_hz = (freq_sample/temp_block)
+        block_size=max_samples
+        for N in range(1, max_samples):
+            bin_size_hz = (freq_sample/N)
             if bin_size_hz < discr_hz:
-                block_size = temp_block
+                block_size = N
                 break
         k = 0.5 + (block_size*freq_target)/freq_sample
         omega = 2*np.pi/block_size*k
@@ -51,12 +54,14 @@ class Goertzel:
             'w': omega,
             'a': coeff,
             'block_size': block_size,
-            'settling_time_ms': settling_time_ms,
+            'settling_time_ms': settling_time_ms, 
             'update_rate_hz': update_rate_hz
         }
 
     def initialize(self, freq_target, freq_sample, block_size):
         ''' init filter'''
+        self.target_freq = freq_target
+        self.sample_rate = freq_sample
         self.block_size = block_size
         self.k = int(0.5 + (block_size*freq_target)/freq_sample)
         self.omega = 2*np.pi/self.block_size*self.k
@@ -69,7 +74,7 @@ class Goertzel:
             'w': self.omega,
             'a': self.coeff,
             'block_size': self.block_size,
-            'settling_time_ms': settling_time_ms,
+            'settling_time_ms': settling_time_ms, 
             'update_rate_hz': update_rate_hz,
             'bin_width': bin_width
         }
@@ -101,3 +106,28 @@ class Goertzel:
         return  self.states[1]**2 +\
                 self.states[2]**2 -\
                 (self.states[1]*self.states[2]*self.coeff)
+
+    def magnitude_response(self, start_freq, end_freq, steps, fs, window='none'):
+        '''simulate a frequency sweep, one block of samples at each freq'''
+        window_map = {
+            'triangular': windowing.TriangularWindow,
+            'flat-top': windowing.FlatTopWindow,
+            'blackman-harris': windowing.BlackmanHarrisWindow,
+        }
+        window = window_map.get(window, windowing.Window)(
+            N=self.block_size
+        )
+        freqs = np.linspace(start_freq, end_freq, steps)
+        output = []
+
+        for freq in freqs:
+            fs = self.sample_rate
+            end_time = (1/fs)*self.block_size
+            time = np.arange(0, end_time, (1/fs))
+            block = np.sin(2*np.pi*freq*time)
+            result = 0
+            for _b in block:
+                '''apply window to sample block and calculate response'''
+                result = self.update(window.update(_b), realtime=True)
+            output.append(result)
+        return (freqs, output)

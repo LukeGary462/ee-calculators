@@ -25,6 +25,132 @@ import math
 from typing import Tuple
 from utils import linspace, safe_log10, APPROX_ZERO
 
+class SimpleIIR:
+    '''iir filter, 1 add, 2 multiply, 1 delay register'''
+    def __init__(self, **kwargs):
+        '''init'''
+        N = kwargs.get('N', 10)
+        self.b0 = 1.0 / N
+        self.a1 = N - 1.0
+        self.last_output = kwargs.get('ic', 0.0)
+
+    def update(self, sample):
+        '''update filter with new sample'''
+        output = (sample + self.last_output*self.a1)*self.b0
+        self.last_output = output 
+        return output
+
+    def reset(self, ic=0.0):
+        '''reset filter'''
+        self.last_output = ic
+
+class FirstOrderIIR:
+    def __init__(self, fc, fs):
+        theta_c = 2.0*math.pi*(fc/fs)
+        self.fc = fc
+        self.fs = fs
+        self.gamma = math.cos(theta_c) / (1.0 + math.sin(theta_c))
+        self.alpha_hp = (1.0 + self.gamma) / 2.0
+        self.alpha_lp = (1.0 - self.gamma) / 2.0
+        self.last_input = 0
+        self.last_output = 0
+
+    # def evaluate_at_frequency(self, freq: float, sample_rate: float) -> Tuple:
+    #     '''placeholder'''
+    #     return (1, 0)
+
+    def get_frequency_response(self, freq_range, **options) -> Tuple:
+        """
+        Gets the frequency response for a given range of frequencies
+
+        :param      freq_range:   The frequency range
+        :type       freq_range:   [start_freq, end_freq]
+        :param      sample_rate:  The sample rate
+        :type       sample_rate:  float
+        :param      options:      The options
+        :type       options:      dictionary
+
+        :returns:   ([freq], [abs(magnitude)], [phase angle])
+        :rtype:     Tuple
+        """
+        logy = options.get('logy', False)
+        num_steps = options.get('num_steps', 1000)
+        max_freq = freq_range[-1]
+        if freq_range[-1] >= (self.fs/2):
+            max_freq = self.fs / 2
+        frequencies = linspace(freq_range[0], max_freq, num_steps)
+
+        results = ([], [], [])
+        for frequency in frequencies:
+            if frequency == 0:
+                continue
+            magnitude, phase_angle = self.evaluate_at_frequency(frequency, self.fs)
+            magnitude = 20*math.log10(magnitude)
+            results[0].append(frequency)
+            results[1].append(magnitude)
+            results[2].append(phase_angle)
+
+        return results
+
+    def reset(self, value=0):
+        self.last_input = value
+        self.last_output = value
+
+    def calculate(self, input_sample):
+        self.last_input = input_sample
+        self.last_output = input_sample
+        return input_sample
+
+    def apply(self, data):
+        self.reset(data[0])
+        return [self.calculate(x) for x in data]
+
+    def apply_zero_phase_filter(self, data):
+        fwd = self.apply(data)
+        rev = fwd[::-1]
+        temp = self.apply(rev)
+        return temp[::-1]
+
+class FirstOrderIIRLowPass(FirstOrderIIR):
+    def __init__(self, fc, fs):
+        super().__init__(
+            fc=fc,
+            fs=fs
+        )
+    def calculate(self, input_sample):
+        output = \
+            self.alpha_lp*(input_sample + self.last_input) +\
+            self.gamma*self.last_output
+        self.last_input = input_sample
+        self.last_output = output
+        return output
+
+    def evaluate_at_frequency(self, freq: float, sample_rate: float) -> Tuple:
+        """
+        evaluate the filter for a given frequency and sample rate
+
+        :returns:   (abs(magnitude), phase angle)
+        :rtype:     Tuple
+        """
+        # calculate constants, we can precompute sine and cosine terms
+        # since we are evaluating for a single frequency
+        theta = 2*math.pi * (freq/self.fs)
+        theta_c = 2*math.pi* (self.fc / self.fs)
+        cos1 = math.cos(theta)
+        cos1c = math.cos(theta_c)
+        sin1 = math.sin(theta)
+        sin1c = math.sin(theta_c)
+        
+        num = (1 + cos1)*(1 - cos1c)
+        dem = 2*(1-cos1*cos1c)
+        magnitude = math.sqrt(num/dem)
+
+        num = -1*(1+cos1c)*sin1
+        dem = (1 + cos1)*sin1c
+        safe_dem = APPROX_ZERO if dem == 0.0 else dem
+        phase = math.atan(num/safe_dem) 
+        # print(magnitude, phase)
+        return (magnitude, phase)
 
 class CombFilter:
     '''comb filter'''

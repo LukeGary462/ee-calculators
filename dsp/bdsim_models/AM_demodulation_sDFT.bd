@@ -1,0 +1,2338 @@
+{
+    "id": 1822299553744,
+    "created_by": "Mohawk",
+    "creation_time": 1696353979,
+    "simulation_time": 0.005,
+    "scene_width": 10752.000000000002,
+    "scene_height": 5443.200000000001,
+    "blocks": [
+        {
+            "id": 1479965024464,
+            "block_type": "SCOPE",
+            "title": "Scope(Input-cont)",
+            "pos_x": 700.0,
+            "pos_y": 480.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 0,
+            "inputs": [
+                {
+                    "id": 1479932730896,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [],
+            "parameters": [
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "vector",
+                    null
+                ],
+                [
+                    "styles",
+                    null
+                ],
+                [
+                    "stairs",
+                    false
+                ],
+                [
+                    "scale",
+                    "auto"
+                ],
+                [
+                    "labels",
+                    null
+                ],
+                [
+                    "grid",
+                    true
+                ],
+                [
+                    "watch",
+                    false
+                ],
+                [
+                    "title",
+                    "Input(cont)"
+                ],
+                [
+                    "loc",
+                    "best"
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1480002511760,
+            "block_type": "WAVEFORM",
+            "title": "SIN(2kHz)",
+            "pos_x": 100.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 1480002573648,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "wave",
+                    "sine"
+                ],
+                [
+                    "freq",
+                    2000.0
+                ],
+                [
+                    "unit",
+                    "Hz"
+                ],
+                [
+                    "amplitude",
+                    1
+                ],
+                [
+                    "offset",
+                    0
+                ],
+                [
+                    "phase",
+                    0
+                ],
+                [
+                    "min",
+                    null
+                ],
+                [
+                    "max",
+                    null
+                ],
+                [
+                    "duty",
+                    0.5
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1479946555792,
+            "block_type": "WAVEFORM",
+            "title": "SIN(2.25kHz)",
+            "pos_x": 100.0,
+            "pos_y": 440.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 1480002628496,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "wave",
+                    "sine"
+                ],
+                [
+                    "freq",
+                    2250.0
+                ],
+                [
+                    "unit",
+                    "Hz"
+                ],
+                [
+                    "amplitude",
+                    1
+                ],
+                [
+                    "offset",
+                    0
+                ],
+                [
+                    "phase",
+                    0
+                ],
+                [
+                    "min",
+                    null
+                ],
+                [
+                    "max",
+                    null
+                ],
+                [
+                    "duty",
+                    0.5
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1480002631888,
+            "block_type": "WAVEFORM",
+            "title": "SIN(2.5kHz)",
+            "pos_x": 100.0,
+            "pos_y": 600.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 1480002693200,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "wave",
+                    "sine"
+                ],
+                [
+                    "freq",
+                    2500.0
+                ],
+                [
+                    "unit",
+                    "Hz"
+                ],
+                [
+                    "amplitude",
+                    1.2
+                ],
+                [
+                    "offset",
+                    0
+                ],
+                [
+                    "phase",
+                    0
+                ],
+                [
+                    "min",
+                    null
+                ],
+                [
+                    "max",
+                    null
+                ],
+                [
+                    "duty",
+                    0.5
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1479656102608,
+            "block_type": "SUM",
+            "title": "Sum Block",
+            "pos_x": 420.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 160.0,
+            "flipped": false,
+            "inputsNum": 5,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2295401193680,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2295401190032,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2295401190608,
+                    "index": 2,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2295401193808,
+                    "index": 3,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2295401190096,
+                    "index": 4,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 1479655362512,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "signs",
+                    "+++++"
+                ],
+                [
+                    "mode",
+                    null
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2295343078544,
+            "block_type": "WAVEFORM",
+            "title": "SIN(2.75kHz)",
+            "pos_x": 100.0,
+            "pos_y": 740.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 2295401281616,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "wave",
+                    "sine"
+                ],
+                [
+                    "freq",
+                    2750.0
+                ],
+                [
+                    "unit",
+                    "Hz"
+                ],
+                [
+                    "amplitude",
+                    1
+                ],
+                [
+                    "offset",
+                    0
+                ],
+                [
+                    "phase",
+                    0
+                ],
+                [
+                    "min",
+                    null
+                ],
+                [
+                    "max",
+                    null
+                ],
+                [
+                    "duty",
+                    0.5
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2295401274064,
+            "block_type": "WAVEFORM",
+            "title": "SIN(3kHz)",
+            "pos_x": 100.0,
+            "pos_y": 880.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 2295401383440,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "wave",
+                    "sine"
+                ],
+                [
+                    "freq",
+                    3000.0
+                ],
+                [
+                    "unit",
+                    "Hz"
+                ],
+                [
+                    "amplitude",
+                    1
+                ],
+                [
+                    "offset",
+                    0
+                ],
+                [
+                    "phase",
+                    0
+                ],
+                [
+                    "min",
+                    null
+                ],
+                [
+                    "max",
+                    null
+                ],
+                [
+                    "duty",
+                    0.5
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2295413729488,
+            "block_type": "ZOH",
+            "title": "Sampler",
+            "pos_x": 900.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2295054977168,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2295329671824,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "clock",
+                    "sample_clock"
+                ],
+                [
+                    "x0",
+                    0
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2295413581136,
+            "block_type": "SCOPE",
+            "title": "Scope(Input-disc)",
+            "pos_x": 900.0,
+            "pos_y": 480.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 0,
+            "inputs": [
+                {
+                    "id": 2295413972560,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [],
+            "parameters": [
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "vector",
+                    null
+                ],
+                [
+                    "styles",
+                    null
+                ],
+                [
+                    "stairs",
+                    false
+                ],
+                [
+                    "scale",
+                    "auto"
+                ],
+                [
+                    "labels",
+                    null
+                ],
+                [
+                    "grid",
+                    true
+                ],
+                [
+                    "watch",
+                    false
+                ],
+                [
+                    "title",
+                    "Input(Sampled)"
+                ],
+                [
+                    "loc",
+                    "best"
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501626655888,
+            "block_type": "FUNCTION",
+            "title": "SAR",
+            "pos_x": 700.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501629071824,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501685585744,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "func",
+                    "sar_adc"
+                ],
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "nout",
+                    1
+                ],
+                [
+                    "persistent",
+                    false
+                ],
+                [
+                    "fargs",
+                    [
+                        16.0,
+                        5.0
+                    ]
+                ],
+                [
+                    "fkwargs",
+                    {}
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501697609488,
+            "block_type": "GAIN",
+            "title": "g_gain_a",
+            "pos_x": 1300.0,
+            "pos_y": 500.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501698284560,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501698278992,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "K",
+                    1
+                ],
+                [
+                    "premul",
+                    false
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501375039184,
+            "block_type": "SUM",
+            "title": "Sum Block 1",
+            "pos_x": 1100.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 2,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501684929744,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2501684929168,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501684924816,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "signs",
+                    "++"
+                ],
+                [
+                    "mode",
+                    null
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501685417168,
+            "block_type": "FUNCTION",
+            "title": "unit_delay(1)_a",
+            "pos_x": 1300.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501698384272,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501698374352,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "func",
+                    "unit_delay"
+                ],
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "nout",
+                    1
+                ],
+                [
+                    "persistent",
+                    true
+                ],
+                [
+                    "fargs",
+                    [
+                        1
+                    ]
+                ],
+                [
+                    "fkwargs",
+                    {}
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501698386448,
+            "block_type": "SUM",
+            "title": "Sum Block 2",
+            "pos_x": 1100.0,
+            "pos_y": 500.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 2,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501698625296,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2501698617616,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501698622544,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "signs",
+                    "++"
+                ],
+                [
+                    "mode",
+                    null
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501698526864,
+            "block_type": "FUNCTION",
+            "title": "unit_delay(1)_b",
+            "pos_x": 1500.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501699128976,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501699129040,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "func",
+                    "unit_delay"
+                ],
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "nout",
+                    1
+                ],
+                [
+                    "persistent",
+                    true
+                ],
+                [
+                    "fargs",
+                    [
+                        1
+                    ]
+                ],
+                [
+                    "fkwargs",
+                    {}
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501698525008,
+            "block_type": "GAIN",
+            "title": "g_gain_b",
+            "pos_x": 1500.0,
+            "pos_y": 500.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501698683984,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501699159312,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "K",
+                    -1
+                ],
+                [
+                    "premul",
+                    false
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501699500432,
+            "block_type": "SCOPE",
+            "title": "Filter Internal",
+            "pos_x": 1700.0,
+            "pos_y": 500.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 0,
+            "inputs": [
+                {
+                    "id": 2501699610896,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [],
+            "parameters": [
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "vector",
+                    null
+                ],
+                [
+                    "styles",
+                    null
+                ],
+                [
+                    "stairs",
+                    false
+                ],
+                [
+                    "scale",
+                    "auto"
+                ],
+                [
+                    "labels",
+                    null
+                ],
+                [
+                    "grid",
+                    true
+                ],
+                [
+                    "watch",
+                    false
+                ],
+                [
+                    "title",
+                    "Goertzel Internal"
+                ],
+                [
+                    "loc",
+                    "best"
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501699500560,
+            "block_type": "ZOH",
+            "title": "g_output_latch",
+            "pos_x": 1700.0,
+            "pos_y": 300.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501684887440,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501699135056,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "clock",
+                    "filter_update"
+                ],
+                [
+                    "x0",
+                    0
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501697819920,
+            "block_type": "SUM",
+            "title": "Sum Block 3",
+            "pos_x": 1160.0,
+            "pos_y": -360.0,
+            "width": 100,
+            "height": 120.0,
+            "flipped": false,
+            "inputsNum": 3,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501698691280,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2501704082192,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2501699024272,
+                    "index": 2,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501698684304,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "signs",
+                    "+-+"
+                ],
+                [
+                    "mode",
+                    null
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501700284496,
+            "block_type": "FUNCTION",
+            "title": "unit_delay(1)_c",
+            "pos_x": 1360.0,
+            "pos_y": -360.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501700365328,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501700369104,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "func",
+                    "unit_delay"
+                ],
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "nout",
+                    1
+                ],
+                [
+                    "persistent",
+                    false
+                ],
+                [
+                    "fargs",
+                    [
+                        1
+                    ]
+                ],
+                [
+                    "fkwargs",
+                    {}
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501700404048,
+            "block_type": "ZOH",
+            "title": "ZOH Block",
+            "pos_x": 2100.0,
+            "pos_y": -360.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501703844624,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501703935248,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "clock",
+                    null
+                ],
+                [
+                    "x0",
+                    0
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501699161360,
+            "block_type": "CONSTANT",
+            "title": "g2_alpha",
+            "pos_x": 1360.0,
+            "pos_y": -80.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 2501700257872,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "value",
+                    "0"
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 2501704157264,
+            "block_type": "PROD",
+            "title": "Prod Block",
+            "pos_x": 1360.0,
+            "pos_y": -220.0,
+            "width": 100,
+            "height": 100,
+            "flipped": true,
+            "inputsNum": 2,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 2501704300304,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 1
+                },
+                {
+                    "id": 2501704297168,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 2501704298256,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "ops",
+                    "**"
+                ],
+                [
+                    "matrix",
+                    false
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1822366569872,
+            "block_type": "FUNCTION",
+            "title": "unit_delay(1)_d",
+            "pos_x": 1500.0,
+            "pos_y": -360.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 1822332848656,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 1822332848144,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "func",
+                    "unit_delay"
+                ],
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "nout",
+                    1
+                ],
+                [
+                    "persistent",
+                    false
+                ],
+                [
+                    "fargs",
+                    [
+                        1
+                    ]
+                ],
+                [
+                    "fkwargs",
+                    {}
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1822332747728,
+            "block_type": "SUM",
+            "title": "Sum Block 4",
+            "pos_x": 1900.0,
+            "pos_y": -360.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 2,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 1822333017040,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 1822333021520,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 1822333018256,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "signs",
+                    "++"
+                ],
+                [
+                    "mode",
+                    null
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1822333228112,
+            "block_type": "PROD",
+            "title": "Prod Block 1",
+            "pos_x": 1740.0,
+            "pos_y": -260.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 2,
+            "outputsNum": 1,
+            "inputs": [
+                {
+                    "id": 1822333557968,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                },
+                {
+                    "id": 1822333556560,
+                    "index": 1,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [
+                {
+                    "id": 1822333556368,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 3,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "ops",
+                    "**"
+                ],
+                [
+                    "matrix",
+                    false
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1822333559376,
+            "block_type": "CONSTANT",
+            "title": "Constant Block",
+            "pos_x": 1740.0,
+            "pos_y": -120.0,
+            "width": 100,
+            "height": 100,
+            "flipped": true,
+            "inputsNum": 0,
+            "outputsNum": 1,
+            "inputs": [],
+            "outputs": [
+                {
+                    "id": 1822333488016,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 2
+                }
+            ],
+            "parameters": [
+                [
+                    "value",
+                    0
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        },
+        {
+            "id": 1822333157520,
+            "block_type": "SCOPE",
+            "title": "g2_output_latch",
+            "pos_x": 2100.0,
+            "pos_y": -200.0,
+            "width": 100,
+            "height": 100,
+            "flipped": false,
+            "inputsNum": 1,
+            "outputsNum": 0,
+            "inputs": [
+                {
+                    "id": 1822299667152,
+                    "index": 0,
+                    "multi_wire": true,
+                    "position": 1,
+                    "socket_type": 1
+                }
+            ],
+            "outputs": [],
+            "parameters": [
+                [
+                    "nin",
+                    1
+                ],
+                [
+                    "vector",
+                    null
+                ],
+                [
+                    "styles",
+                    null
+                ],
+                [
+                    "stairs",
+                    false
+                ],
+                [
+                    "scale",
+                    "auto"
+                ],
+                [
+                    "labels",
+                    null
+                ],
+                [
+                    "grid",
+                    true
+                ],
+                [
+                    "watch",
+                    false
+                ],
+                [
+                    "title",
+                    "Non-Integer K Filter output"
+                ],
+                [
+                    "loc",
+                    "best"
+                ],
+                [
+                    "blockargs",
+                    null
+                ]
+            ]
+        }
+    ],
+    "wires": [
+        {
+            "id": 2295413095568,
+            "start_socket": 1480002573648,
+            "end_socket": 2295401193680,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2295413088848,
+            "start_socket": 1480002628496,
+            "end_socket": 2295401190032,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    420.0,
+                    360.0
+                ],
+                [
+                    230.0,
+                    360.0
+                ],
+                [
+                    230.0,
+                    480.0
+                ],
+                [
+                    200.0,
+                    480.0
+                ]
+            ]
+        },
+        {
+            "id": 2295413415632,
+            "start_socket": 1480002693200,
+            "end_socket": 2295401190608,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    420.0,
+                    380.0
+                ],
+                [
+                    260.0,
+                    380.0
+                ],
+                [
+                    260.0,
+                    640.0
+                ],
+                [
+                    200.0,
+                    640.0
+                ]
+            ]
+        },
+        {
+            "id": 2295413578896,
+            "start_socket": 2295401281616,
+            "end_socket": 2295401193808,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    420.0,
+                    400.0
+                ],
+                [
+                    290.0,
+                    400.0
+                ],
+                [
+                    290.0,
+                    780.0
+                ],
+                [
+                    200.0,
+                    780.0
+                ]
+            ]
+        },
+        {
+            "id": 2295413521744,
+            "start_socket": 2295401383440,
+            "end_socket": 2295401190096,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    420.0,
+                    420.0
+                ],
+                [
+                    320.0,
+                    420.0
+                ],
+                [
+                    320.0,
+                    920.0
+                ],
+                [
+                    200.0,
+                    920.0
+                ]
+            ]
+        },
+        {
+            "id": 2295413735184,
+            "start_socket": 1479655362512,
+            "end_socket": 1479932730896,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501697649872,
+            "start_socket": 2501629071824,
+            "end_socket": 1479655362512,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501697545232,
+            "start_socket": 2501685585744,
+            "end_socket": 2295054977168,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501697828112,
+            "start_socket": 2295329671824,
+            "end_socket": 2295413972560,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501698623248,
+            "start_socket": 2501684929168,
+            "end_socket": 2501698622544,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1100.0,
+                    360.0
+                ],
+                [
+                    1080.0,
+                    360.0
+                ],
+                [
+                    1080.0,
+                    460.0
+                ],
+                [
+                    1220.0,
+                    460.0
+                ],
+                [
+                    1220.0,
+                    540.0
+                ],
+                [
+                    1200.0,
+                    540.0
+                ]
+            ]
+        },
+        {
+            "id": 2501698624016,
+            "start_socket": 2295329671824,
+            "end_socket": 2501684929744,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501698619920,
+            "start_socket": 2501684924816,
+            "end_socket": 2501698384272,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501699259728,
+            "start_socket": 2501698374352,
+            "end_socket": 2501698284560,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1300.0,
+                    540.0
+                ],
+                [
+                    1280.0,
+                    540.0
+                ],
+                [
+                    1280.0,
+                    460.0
+                ],
+                [
+                    1440.0,
+                    460.0
+                ],
+                [
+                    1440.0,
+                    340.0
+                ],
+                [
+                    1400.0,
+                    340.0
+                ]
+            ]
+        },
+        {
+            "id": 2501699261840,
+            "start_socket": 2501699129040,
+            "end_socket": 2501698683984,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1500.0,
+                    540.0
+                ],
+                [
+                    1480.0,
+                    540.0
+                ],
+                [
+                    1480.0,
+                    460.0
+                ],
+                [
+                    1620.0,
+                    460.0
+                ],
+                [
+                    1620.0,
+                    340.0
+                ],
+                [
+                    1600.0,
+                    340.0
+                ]
+            ]
+        },
+        {
+            "id": 2501699271888,
+            "start_socket": 2501698374352,
+            "end_socket": 2501699128976,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501699256912,
+            "start_socket": 2501698617616,
+            "end_socket": 2501698278992,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1100.0,
+                    560.0
+                ],
+                [
+                    1080.0,
+                    560.0
+                ],
+                [
+                    1080.0,
+                    670.0
+                ],
+                [
+                    1420.0,
+                    670.0
+                ],
+                [
+                    1420.0,
+                    540.0
+                ],
+                [
+                    1400.0,
+                    540.0
+                ]
+            ]
+        },
+        {
+            "id": 2501699336464,
+            "start_socket": 2501699159312,
+            "end_socket": 2501698625296,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501699612880,
+            "start_socket": 2501699129040,
+            "end_socket": 2501684887440,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501699173968,
+            "start_socket": 2501699610896,
+            "end_socket": 2501699129040,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 2501703756880,
+            "start_socket": 2501700257872,
+            "end_socket": 2501704297168,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822330048528,
+            "start_socket": 2501698684304,
+            "end_socket": 2501700365328,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822331361232,
+            "start_socket": 2501700369104,
+            "end_socket": 2501704300304,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822331364880,
+            "start_socket": 2501704298256,
+            "end_socket": 2501699024272,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1160.0,
+                    -280.0
+                ],
+                [
+                    1100.0,
+                    -280.0
+                ],
+                [
+                    1100.0,
+                    -180.0
+                ],
+                [
+                    1310.0,
+                    -180.0
+                ],
+                [
+                    1310.0,
+                    -180.0
+                ],
+                [
+                    1360.0,
+                    -180.0
+                ]
+            ]
+        },
+        {
+            "id": 1822332847312,
+            "start_socket": 2501700369104,
+            "end_socket": 1822332848656,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822333157776,
+            "start_socket": 1822332848144,
+            "end_socket": 1822333017040,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822333834960,
+            "start_socket": 1822332848144,
+            "end_socket": 1822333557968,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1740.0,
+                    -220.0
+                ],
+                [
+                    1700.0,
+                    -220.0
+                ],
+                [
+                    1700.0,
+                    -320.0
+                ],
+                [
+                    1600.0,
+                    -320.0
+                ]
+            ]
+        },
+        {
+            "id": 1822333834512,
+            "start_socket": 1822333556368,
+            "end_socket": 1822333021520,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822334097168,
+            "start_socket": 1822333488016,
+            "end_socket": 1822333556560,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822333558096,
+            "start_socket": 1822332848144,
+            "end_socket": 2501704082192,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1160.0,
+                    -300.0
+                ],
+                [
+                    1080.0,
+                    -300.0
+                ],
+                [
+                    1080.0,
+                    60.0
+                ],
+                [
+                    1620.0,
+                    60.0
+                ],
+                [
+                    1620.0,
+                    -320.0
+                ],
+                [
+                    1600.0,
+                    -320.0
+                ]
+            ]
+        },
+        {
+            "id": 1822334194896,
+            "start_socket": 2501703844624,
+            "end_socket": 1822333018256,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822432038416,
+            "start_socket": 2295329671824,
+            "end_socket": 2501698691280,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    1160.0,
+                    -320.0
+                ],
+                [
+                    1020.0,
+                    -320.0
+                ],
+                [
+                    1020.0,
+                    340.0
+                ],
+                [
+                    1000.0,
+                    340.0
+                ]
+            ]
+        },
+        {
+            "id": 1822432316304,
+            "start_socket": 1822299667152,
+            "end_socket": 1822333018256,
+            "wire_type": 3,
+            "custom_routing": true,
+            "wire_coordinates": [
+                [
+                    2100.0,
+                    -160.0
+                ],
+                [
+                    2050.0,
+                    -160.0
+                ],
+                [
+                    2050.0,
+                    -320.0
+                ],
+                [
+                    2000.0,
+                    -320.0
+                ]
+            ]
+        }
+    ],
+    "labels": [
+        {
+            "id": 2295330693136,
+            "text": "Signal Of Interest (20% addl signal) -->",
+            "pos_x": -245.0,
+            "pos_y": 615.0,
+            "width": 334,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Signal Of Interest (20% addl signal) --&gt;</p></body></html>"
+        },
+        {
+            "id": 2295413571792,
+            "text": "Fluorescence Emission Signals after Summing Amplifier",
+            "pos_x": -270.0,
+            "pos_y": 195.0,
+            "width": 481,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Fluorescence Emission Signals after Summing Amplifier</p></body></html>"
+        },
+        {
+            "id": 2501613247824,
+            "text": "SAR ADC",
+            "pos_x": 590.0,
+            "pos_y": 200.0,
+            "width": 93,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">SAR ADC</p></body></html>"
+        },
+        {
+            "id": 2501697649104,
+            "text": "Very Basic Approximation of a SAR ADC",
+            "pos_x": 620.0,
+            "pos_y": 685.0,
+            "width": 350,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Very Basic Approximation of a SAR ADC</p></body></html>"
+        },
+        {
+            "id": 2501617712080,
+            "text": "given the limitations of vanilla bdedit/bdsim",
+            "pos_x": 620.0,
+            "pos_y": 735.0,
+            "width": 365,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">given the limitations of vanilla bdedit/bdsim</p></body></html>"
+        },
+        {
+            "id": 2501698534928,
+            "text": "Basic Goertzel Filter",
+            "pos_x": 1075.0,
+            "pos_y": 210.0,
+            "width": 179,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Basic Goertzel Filter</p></body></html>"
+        },
+        {
+            "id": 2501697607760,
+            "text": "g_gain_a = 2*cos( (2*pi*m) / block_size )",
+            "pos_x": 1110.0,
+            "pos_y": 710.0,
+            "width": 351,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">g_gain_a = 2*cos( (2*pi*m) / block_size )</p></body></html>"
+        },
+        {
+            "id": 2501698375568,
+            "text": "m = freq_domain bin number\nThis simulation assumes 250Hz channel separation,\nso assuming Fs=1MHz, and a desired bin width of 125Hz\nto minimize crosstalk, \n\n",
+            "pos_x": 1110.0,
+            "pos_y": 760.0,
+            "width": 486,
+            "height": 145,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">m = freq_domain bin number</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">This simulation assumes 250Hz channel separation,</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">so assuming Fs=1MHz, and a desired bin width of 125Hz</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">to minimize crosstalk, </p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p>\n<p style=\"-qt-paragraph-type:empty; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\"><br /></p></body></html>"
+        },
+        {
+            "id": 1822432767952,
+            "text": "Non-Integer \"k-value\" Goertzel Implementation",
+            "pos_x": 1080.0,
+            "pos_y": -440.0,
+            "width": 398,
+            "height": 30,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Non-Integer &quot;k-value&quot; Goertzel Implementation</p></body></html>"
+        },
+        {
+            "id": 1822333663120,
+            "text": "ZOH may be moved to the input of this block to only \nevaluate every N-samples",
+            "pos_x": 1785.0,
+            "pos_y": 25.0,
+            "width": 441,
+            "height": 53,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">ZOH may be moved to the input of this block to only </p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">evaluate every N-samples</p></body></html>"
+        },
+        {
+            "id": 1822310793168,
+            "text": "k=target_freq*N/Fs\nAlpha = (2*pi*k/N)   \nBeta   = (2*pi*k*(N-1))/N",
+            "pos_x": 1105.0,
+            "pos_y": -155.0,
+            "width": 206,
+            "height": 76,
+            "fill_color": [
+                255,
+                255,
+                255,
+                255
+            ],
+            "styling": "<!DOCTYPE HTML PUBLIC \"-//W3C//DTD HTML 4.0//EN\" \"http://www.w3.org/TR/REC-html40/strict.dtd\">\n<html><head><meta name=\"qrichtext\" content=\"1\" /><style type=\"text/css\">\np, li { white-space: pre-wrap; }\n</style></head><body style=\" font-family:'Arial'; font-size:14pt; font-weight:400; font-style:normal;\">\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">k=target_freq*N/Fs</p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Alpha = (2*pi*k/N)   </p>\n<p style=\" margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;\">Beta   = (2*pi*k*(N-1))/N</p></body></html>"
+        }
+    ],
+    "grouping_boxes": [
+        {
+            "id": 2295344882320,
+            "pos_x": -300.0,
+            "pos_y": 160.0,
+            "width": 840.0,
+            "height": 880.0,
+            "color": [
+                255,
+                170,
+                255
+            ]
+        },
+        {
+            "id": 2295413734544,
+            "pos_x": 560.0,
+            "pos_y": 160.0,
+            "width": 480.0,
+            "height": 880.0,
+            "color": [
+                255,
+                255,
+                127
+            ]
+        },
+        {
+            "id": 2501630152912,
+            "pos_x": 1060.0,
+            "pos_y": 160.0,
+            "width": 780.0,
+            "height": 880.0,
+            "color": [
+                85,
+                85,
+                255
+            ]
+        },
+        {
+            "id": 1822333559760,
+            "pos_x": 1060.0,
+            "pos_y": -460.0,
+            "width": 1200.0,
+            "height": 600.0,
+            "color": [
+                85,
+                255,
+                127
+            ]
+        },
+        {
+            "id": 1822331648912,
+            "pos_x": 1640.0,
+            "pos_y": -400.0,
+            "width": 600.0,
+            "height": 500.0,
+            "color": [
+                146,
+                187,
+                255
+            ]
+        }
+    ]
+}

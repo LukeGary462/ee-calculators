@@ -1,0 +1,755 @@
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=windows-1252">
+<title>
+Fuzzy Logic in C
+</title>
+<style>
+<!--
+a{text-decoration:none}
+-->
+</style>
+</head>
+
+<body bgcolor="ffffff" text="black" link="blue" vlink="blue">
+
+<font face="arial" size="3">
+
+<h3>
+Fuzzy Logic in C
+</h3>
+<p>
+
+Creating a fuzzy-based inference engine
+</p><p>
+
+Greg Viot,
+<cite>Dr. Dobb's Journal</cite>,
+February 1993
+
+</p><p>
+
+<i>
+Greg is a member of the
+Motorola technical ladder and is currently merging fuzzy logic with
+microcontrollers. He has an MSEE from National Technological
+University and a BSEE from the University of Texas at Austin. Greg
+can be contacted at Motorola Advanced Microcontroller Division, 6501
+William Cannon Drive West, Austin, Texas 78735-8598.
+</i>
+</p><p>
+
+</p><hr>
+<p>
+
+Fuzzy logic is a powerful, yet straightforward, problem-solving
+technique with widespread applicability, especially in the areas of
+control and decision making. In general, it is most useful in
+handling problems not easily definable by practical mathematical
+models. For instance, fuzzy logic has been employed in such tasks as
+managing stock-market portfolios and controlling subway systems.
+</p><p>
+
+Fuzzy derives much of its power from its ability to draw
+conclusions and generate responses based on vague, ambiguous,
+qualitative, incomplete, or imprecise information. In this respect,
+fuzzy-based systems have a reasoning ability similar to that of
+humans. In fact, the behavior of a fuzzy system is represented in a
+very simple and natural way. This allows quick construction of
+understandable, maintainable, and robust systems. In addition, a
+fuzzy approach generally requires much less memory and computing
+power than conventional methods, thereby permitting smaller and less
+expensive systems.
+</p><p>
+
+<a href="http://www.azer.com/aiweb/categories/magazine/24_folder/24_articles/24_fuzzylogic.html">Lotfi Zadeh</a>,
+a professor at the University of California at
+Berkeley, is the person most widely associated with fuzzy logic. In
+1965 he presented the original paper formally defining fuzzy-set
+theory, from which fuzzy logic emerged. Zadeh extended traditional
+theory to resolve the paradoxes sometimes generated from the
+"nothing-or-all" classifications of Aristotelian logic.
+Traditionally, a logic premise has two extremes: either completely
+true or completely false. However, in the fuzzy world, a premise
+ranges in degree of truth from 0 to 100 percent, which allows it to
+be partially true and partially false.
+</p><p>
+
+By incorporating this "degree of truth" concept, fuzzy logic
+extends traditional logic in two ways. First, sets are labeled
+qualitatively (using linguistic terms such as "tall," "warm,"
+"active," "nearby," and so on), and the elements of these sets are
+assigned varying degrees of membership. For instance, a 5'11" man
+and a 6'4" man may both be members of a set of "tall" men, although
+the 6'4" man has a higher degree of membership. Secondly, any action
+or output resulting from a premise being true executes to a strength
+reflecting the degree to which that premise is true.
+</p><p>
+
+As an example, imagine a fan motor, the speed of which is a
+function of temperature, as shown in
+<a href="#table1">Table 1</a>.
+The current supplied to the fan motor is regulated by sets of
+temperature: cold, cool, warm, and hot. In this system, as the
+temperature gradually moves from warm to cool, the current gradually
+moves from 50 to 15. By continuously tracking inputs, outputs can
+avoid abrupt changes, even as inputs transcend set boundaries.
+Fuzzy-based systems are constructed so that generated outputs change
+in a smooth and continuous manner, regardless of inputs crossing set
+boundaries.
+</p><p>
+
+<a name="table1">
+<b>Table 1: Fan-speed control.</b>
+</a></p><p><a name="table1">
+
+</a></p><pre><a name="table1">  Temperature    Fan Speed    Relative Motor
+                                 Current
+  ------------------------------------------
+
+     Cold         Off                0
+     Cool         Slow              15
+     Warm         Medium            50
+     Hot          Fast             100
+</a></pre><a name="table1">
+<p>
+
+<b>Organization of a Fuzzy System</b>
+</p></a><p><a name="table1">
+
+</a><a href="#figure1">Figure 1</a>
+illustrates the flow of data through a fuzzy system. System
+inputs undergo three transformations to become system outputs.
+First, a fuzzification process that uses predefined membership
+functions maps each system input into one or more degrees of
+membership. Then, the rules in the rule base (also predefined) are
+evaluated by combining degrees of membership to form output
+strengths. And lastly, the defuzzification process computes system
+outputs based on strengths and membership functions.
+</p><p>
+
+</p><center>
+<a name="figure1">
+<img src="Fuzzy%20Logic%20in%20C_files/figure1.gif">
+</a></center><a name="figure1">
+<p>
+
+<b>Fuzzification of Inputs</b>
+</p></a><p><a name="figure1">
+
+Fuzzification is the process of
+assigning or calculating a value to represent an input's degree of
+membership in one or more qualitative groupings, called "fuzzy
+sets."
+</a><a href="#figure2">Figure 2</a>
+shows a system input, temperature, with fuzzy sets cold, cool,
+warm, and hot. Each temperature value has a degree of membership in
+each of these sets. The degree of membership is determined by a
+membership function, which is defined based on experience or
+intuition.
+<a href="#figure9">Figure 9</a>
+illustrates the degree of membership calculation for a
+trapezoidal membership function. It is accepted that membership
+functions change several times as the system is tuned to achieve
+desired responses to given inputs.
+</p><p>
+
+</p><center>
+<a name="figure2">
+<img src="Fuzzy%20Logic%20in%20C_files/figure2.gif">
+</a></center><a name="figure2">
+<p>
+
+
+Generally, once the system is in operation, the membership
+functions do not change. Simple shapes such as trapezoids and
+triangles are often used to define membership in fuzzy sets, but any
+suitable function can be used. In addition, you must decide upon the
+number of fuzzy sets per system input.
+</p></a><p><a name="figure2">
+
+In
+</a><a href="#figure2">Figure 2</a>,
+a fuzzy set labeled comfortable could be inserted between
+cool and warm. The number of fuzzy-set membership functions and the
+shapes you choose depend on such things as required accuracy,
+responsiveness and stability of the system, ease of implementation,
+manipulation, and maintenance, and so on. The trapezoidal and
+triangular membership functions are most common and have proven to
+be good compromises between effectiveness and efficiency. The fuzzy
+sets must span the X-axis covering the entire range, or universe of
+discourse, for a system input. Mapping to the Y-axis ranges from 0
+to 1 and represents the degree to which an input value is a member
+of that particular fuzzy set. Overlapping between set boundaries is
+desirable and key to the smooth operation of the system. It permits
+membership in multiple--even seemingly contradictory--sets. In
+<a href="#figure2">Figure 2</a>,
+63 degrees can be both cool and warm, but it is cool to a
+greater degree. An overlap of 25 percent between adjacent fuzzy sets
+is a general rule of thumb.
+</p><p>
+
+The fuzzification process permits a binding to take place between
+linguistic terms (cold, nearby, active, large, and so on) and
+membership functions, making the terms meaningful to a computer. As
+a result, a designer can express or modify the behavior of a system
+using such natural language, thus enhancing the possibility of clear
+and concise descriptions of complex tasks.
+</p><p>
+
+<b>Evaluation of Rules</b>
+</p><p>
+
+ To govern the system's behavior, the
+designer develops a set of rules that have the form of If-Then
+statements. The If side of a rule contains one or more conditions,
+called "antecedents;" the Then side contains one or more actions,
+called "consequences." The antecedents of rules correspond directly
+to degrees of membership calculated during the fuzzification
+process.
+</p><p>
+
+For example, consider a potential rule from the stock-market
+system shown in
+<a href="#figure3">Figure 3</a>:
+If share price is decreasing And trading volume is heavy,
+Then order is sell. The two conditions "share price is decreasing"
+and "trading volume is heavy" are the rule's antecedents. Each
+antecedent has a degree-of-truth (membership) value assigned to it
+as a result of fuzzification. The action of the rule (or "fuzzy
+output") is to sell shares. During rule evaluation, strengths are
+computed based on antecedent values and then assigned to the rules'
+fuzzy outputs. Generally, a minimum function is used so that the
+strength of a rule is assigned the value of its weakest or least
+true antecedent. Other methods to compute rule strength can be used,
+such as multiplying antecedent values together. The action of
+selling shares is carried out to a degree that reflects the rule's
+strength. In other words, the amount of shares sold is based on the
+degree to which share price is decreasing and trading volume is
+heavy. Often, more than one rule applies to the same specific
+action, in which case the common practice is to use the strongest or
+most true rule; see
+<a href="#figure4">Figure 4</a>.
+</p><p>
+
+</p><center>
+<a name="figure3">
+<img src="Fuzzy%20Logic%20in%20C_files/figure3.gif">
+</a></center><a name="figure3">
+</a><p><a name="figure3">
+
+</a><a name="figure4">
+<b>Figure 4: Rule-evaluation computation.</b>
+</a></p><p><a name="figure4">
+
+</a></p><pre><a name="figure4">  Rule 1: if A &amp; B then Z &amp; X
+  Rule 2: if C &amp; D then Z &amp; Y
+
+  Strength of Rule 1 = min (A,B)
+  Strength of Rule 2 = min (C,D)
+
+  X = Strength of Rule 1
+  Y = Strength of Rule 2
+
+  Z = max (Strength of Rule 1
+           Strength of Rule 2)
+    = max (min(A,B), min(C,D))
+</a></pre><a name="figure4">
+<p>
+
+<b>Defuzzification of Outputs</b>
+</p><p>
+
+Even though the rule-evaluation
+process assigns strengths to each specific action, further
+processing, or "defuzzification," is required for two reasons. The
+first is to decipher the meaning of vague (fuzzy) actions, such as
+"order is sell," using membership functions. The second is to
+resolve conflicts between competing actions such as "order is sell"
+and "order is hold," which may have been triggered by certain
+conditions during rule evaluation. Defuzzification employs
+compromising techniques to resolve both the vagueness and conflict
+issues.
+</p></a><p><a name="figure4">
+
+One common defuzzification technique, the "center-of-gravity
+method," consists of several steps. Initially, a centroid point on
+the X-axis is determined for each output membership function. Then,
+the membership functions are limited in height by the applied rule
+strength, and the areas of the membership functions are computed.
+Finally, the defuzzified output is derived by a weighted average of
+the X-axis centroid points and the computed areas, with the areas
+serving as the weights. The center-of-gravity method is illustrated
+in
+</a><a href="#figure5">Figure 5</a>.
+</p><p>
+
+</p><center>
+<a name="figure5">
+<img src="Fuzzy%20Logic%20in%20C_files/figure5.gif">
+</a></center><a name="figure5">
+</a><p><a name="figure5">
+
+Sometimes, "singletons" are used to simplify the defuzzification
+process; see
+</a><a href="#figure6">Figure 6</a>.
+A singleton is an output membership function represented by a
+single vertical line. Since a singleton intersects the X-axis at
+only one point, the center-of-gravity calculation reduces to just a
+weighted average calculation of X-axis points and rule strengths,
+with the rule strengths used as weights.
+</p><p>
+
+</p><center>
+<a name="figure6">
+<img src="Fuzzy%20Logic%20in%20C_files/figure6.gif">
+</a></center><a name="figure6">
+</a><p><a name="figure6">
+
+<b>Fuzzy Data Structures</b></a><b><a name="006c_0007"></a></b><a name="006c_0007">
+</a></p><p><a name="006c_0007">
+
+To implement a fuzzy system in C, the following types of data
+must be accommodated:
+</a></p><p><a name="006c_0007">
+
+</a></p><ul><a name="006c_0007">
+  <li>System inputs.
+  </li><li>Input membership functions.
+  </li><li>Antecedent values.
+  </li><li>Rules.
+  </li><li>Rule-output strengths.
+  </li><li>Output membership functions.
+  </li><li>System outputs. </li>
+</a></ul><a name="006c_0007">
+
+</a><a href="#figure7">Figure 7</a>
+illustrates an overall linked-list arrangement of system-input
+and membership-function nodes. The details of these structures are
+shown in
+<a href="#figure8">Figure 8</a>.
+The system-input node is straight-forward and contains an
+input name, a membership-function pointer, and a next-input pointer.
+More interesting is the membership-function structure, which
+contains two X-axis points and two slope values that describe a
+trapezoidal membership function. This information is used to
+calculate antecedent values (degrees of membership), as shown in
+<a href="#figure9">Figure 9</a>
+and
+<a href="#listing3">Listing Three</a>
+(page 94). The resulting antecedent value is stored in the
+"value" field of the membership-function structure. Rules can be
+represented by two sets of pointers; see
+<a href="#figure10">Figure 10</a>.
+The first set indicates which antecedent values are used to
+determine the rule's strength, and the second set points to output
+locations where the strength is to be applied. Finally, a data
+arrangement similar to the input-data structure handles outputs and
+output membership functions; see
+<a href="#figure11">Figure 11</a>.
+<a href="#listing1">Listing One</a>
+(page 94) includes the C-code definition of these data
+structures. Articles by James M. Sibigtroth (see "References")
+explain the implementation of fuzzy systems at the assembly language
+level.
+<p>
+
+
+</p><center>
+<a name="figure7">
+<img src="Fuzzy%20Logic%20in%20C_files/figure7.gif">
+</a></center><a name="figure7">
+<p>
+
+
+</p></a><center><a name="figure7">
+</a><a name="figure8">
+<img src="Fuzzy%20Logic%20in%20C_files/figure8.gif">
+</a></center><a name="figure8">
+<p>
+
+
+</p></a><center><a name="figure8">
+</a><a name="figure9">
+<img src="Fuzzy%20Logic%20in%20C_files/figure9.gif">
+</a></center><a name="figure9">
+<p>
+
+
+</p></a><center><a name="figure9">
+</a><a name="figure10">
+<img src="Fuzzy%20Logic%20in%20C_files/figure10.gif">
+</a></center><a name="figure10">
+<p>
+
+
+</p></a><center><a name="figure10">
+</a><a name="figure11">
+<img src="Fuzzy%20Logic%20in%20C_files/figure11.gif">
+</a></center><a name="figure11">
+<p>
+
+<b>Inverted-pendulum Example</b>
+</p></a><p><a name="figure11">
+
+</a><a href="#figure12">Figure 12</a>
+shows a classic two-dimensional control problem known as the
+"inverted pendulum." The idea is to keep a pole vertically balanced.
+The pole is weighted at the top and attached at the bottom by a
+movable base. If the pole falls to the right or left, the base moves
+in the same direction to compensate. By monitoring the angle and
+angular velocity of the pendulum, a fuzzy system can determine the
+proper force to apply at the base to keep it balanced.
+<a href="#figure13">Figure 13</a>
+shows the fuzzy sets associated with the system inputs and
+output. The exact set of rules depends on the dynamics of the
+physical components, required robustness, and range of operating
+conditions.
+</p><p>
+
+</p><center>
+<a name="figure12">
+<img src="Fuzzy%20Logic%20in%20C_files/figure12.gif">
+</a></center><a name="figure12">
+<p>
+
+</p></a><center><a name="figure12">
+</a><a name="figure13">
+<img src="Fuzzy%20Logic%20in%20C_files/figure13.gif">
+</a></center><a name="figure13">
+</a><p><a name="figure13">
+
+Theoretically, the rule base in
+</a><a href="#figure14">Figure 14</a>
+is sufficient to balance the pendulum, but other solutions
+exist. A general-purpose fuzzy inference engine like that in
+<a href="#listing1">Listings One through Four</a>
+can be applied to many applications.
+<a href="#listing1">Listing One</a>
+provides the header and data structures,
+<a href="#listing2">Listings Two</a>
+and
+<a href="#listing3">Three</a>
+(page 94) present the major fuzzy processes, and
+<a href="#listing4">Listing Four</a>
+(page 94) lists the math-support functions. The
+input-configuration files describing system input/output, the
+membership functions, and the rule base differ from application to
+application.
+<a href="#figure14">Figures 14</a>
+and
+<a href="#figure15">15</a>
+contain the necessary information to implement the inverted-pendulum
+problem.
+</p><p>
+
+<a name="figure14">
+<b>Figure 14: Inverted pendulum rule base.</b>
+</a></p><p><a name="figure14">
+
+</a></p><pre><a name="figure14">  Rule 1:    IF (angle is NL)   AND (velocity is ZE)   THEN (force is PL)
+  Rule 2:    IF (angle is ZE)   AND (velocity is NL)   THEN (force is PL)
+  Rule 3:    IF (angle is NM)   AND (velocity is ZE)   THEN (force is PM)
+  Rule 4:    IF (angle is ZE)   AND (velocity is NM)   THEN (force is PM)
+  Rule 5:    IF (angle is NS)   AND (velocity is ZE)   THEN (force is PS)
+  Rule 6:    IF (angle is ZE)   AND (velocity is NS)   THEN (force is PS)
+  Rule 7:    IF (angle is NS)   AND (velocity is PS)   THEN (force is PS)
+  Rule 8:    IF (angle is ZE)   AND (velocity is ZE)   THEN (force is ZE)
+  Rule 9:    IF (angle is ZE)   AND (velocity is PS)   THEN (force is NS)
+  Rule 10:   IF (angle is PS)   AND (velocity is ZE)   THEN (force is NS)
+  Rule 11:   IF (angle is PS)   AND (velocity is NS)   THEN (force is NS)
+  Rule 12:   IF (angle is ZE)   AND (velocity is PM)   THEN (force is NM)
+  Rule 13:   IF (angle is NM)   AND (velocity is ZE)   THEN (force is NM)
+  Rule 14:   IF (angle is ZE)   AND (velocity is PL)   THEN (force is NL)
+  Rule 15:   IF (angle is PL)   AND (velocity is ZE)   THEN (force is NL)
+</a></pre><a name="figure14">
+</a><p><a name="figure14">
+
+</a><a name="figure15">
+<b>Figure 15: Sample membership function input file.</b>
+</a></p><p><a name="figure15">
+
+</a></p><pre><a name="figure15">  input: angle             input: velocity          output: force
+  NL:    0   31   31   63  NL:    0   31   31   63  NL:    0   31   31   63
+  NM:   31   63   63   95  NM:   31   63   63   95  NM:   31   63   63   95
+  NS:   63   95   95  127  NS:   63   95   95  127  NS:   63   95   95  127
+  ZE:   95  127  127  159  ZE:   95  127  127  159  ZE:   95  127  127  159
+  PS:  127  159  159  191  PS:  127  159  159  191  PS:  127  159  159  191
+  PM:  159  191  191  223  PM:  159  191  191  223  PM:  159  191  191  223
+  PL:  191  223  223  255  PL:  191  223  223  255  PL:  191  223  223  255
+</a></pre><a name="figure15">
+</a><p><a name="figure15">
+
+</a><a href="#figure15">Figure 15</a>
+repeats the input/output and membership information shown
+<a href="#figure13">Figure 13</a>
+in a format that can be easily parsed by an initialization
+routine. Such an initialization routine (not shown in the listings)
+sets up the required data structures, converting the four points
+describing a membership function into two points and two slopes; see
+<a href="#figure16">Figure 16</a>.
+</p><p>
+
+
+</p><center>
+<a name="figure16">
+<img src="Fuzzy%20Logic%20in%20C_files/figure16.gif">
+</a></center><a name="figure16">
+</a><p><a name="figure16">
+Generally, four points describe a trapezoid, but a triangle can
+be formed by making the two midpoints identical, as in
+</a><a href="#figure16">Figure 16</a>.
+</p><p>
+
+<b>Closing Remarks</b>
+</p><p>
+
+The emergence of fuzzy logic is exciting because it is readily
+applicable to many problems too awkward to solve with conventional
+techniques. Any programmer can easily write code to implement a
+fuzzy inference engine like the one presented here. However,
+excellent fuzzy development tools exist which allow the designer to
+focus more on the application and behavior of the system and less on
+the implementation. These tools provide user-friendly, graphical
+interfaces with a rich set of support functions for analyzing,
+debugging, and simulating the system. Examples of such tools are:
+FIDE from Aptronix (San Jose, CA), CubiCalc from Hyperlogic
+(Escondido, CA), and TILShell from Togai InfraLogic (Irvine, CA). In
+addition, Motorola distributes free fuzzy development tools through
+their electronic BBS. "Freeware Data Services," at 512-891-3733 (in
+the subdirectory amcu/amcull).
+</p><p>
+
+Implementing the fuzzy engine manually, however, affords the
+ability to understand, optimize, or customize the fuzzy inference
+engine. This is especially important when experimenting with new
+fuzzy paradigms, such as rulebase hierarchies and adaptive or hybrid
+systems.
+</p><p>
+
+<b>References</b>
+</p><p>
+
+Brubaker, David I. Introduction to Fuzzy Logic Systems. Menlo
+Park, CA: The Huntington Group, 1991.
+</p><p>
+
+Kosko, Bart. Neural Networks and Fuzzy Systems. Englewood
+Cliffs., NJ: Prentice-Hall, 1990.
+</p><p>
+
+Self, Kevin. "Designing with Fuzzy Logic." IEEE Spectrum
+(November, 1990).
+</p><p>
+
+Sibigtroth, James M. "Creating Fuzzy Micros." Embedded Systems
+Programming (December, 1991).
+</p><p>
+
+Sibigtroth, James M. "Implementing Fuzzy Expert Rules." AI Expert
+(April, 1992).
+</p><p>
+
+Williams, Tom. "Fuzzy Logic is Anything but Fuzzy." Computer
+Design (April, 1992).
+</p><p>
+
+</p><hr>
+<p>
+
+<a name="listing1">
+<b>[LISTING ONE]</b>
+
+</a></p><pre><a name="listing1">
+/*  General-purpose fuzzy inference engine supporting any number of system
+inputs and outputs, membership functions, and rules. Membership functions can
+be any shape defineable by 2 points and 2 slopes--trapezoids, triangles,
+rectanlges, etc. Rules can have any number of antecedents and outputs, and can
+vary from rule to rule. "Min" method is used to compute rule strength, "Max"
+for applying rule strengths, "Center-of-Gravity" for defuzzification. This
+implementation of Inverted Pendulum control problem has: System Inputs, 2
+(pendulum angle and velocity); System Outputs, 1 (force supplied to base of
+pendulum); Membership Functions, 7 per system input/output; Rules, 15 (each
+with 2 antecedents &amp; 1 output). If more precision is required, integers can
+be changed to real numbers.*/
+
+#include &lt;stdio.h&gt;
+#define MAXNAME 10          /* max number of characters in names           */
+#define UPPER_LIMIT  255    /* max number assigned as degree of membership */
+
+/* io_type structure builds a list of system inputs and a list of system
+outputs. After initialization, these lists are fixed, except for value field
+which is updated on every inference pass. */
+struct io_type{
+  char name[MAXNAME];        /*  name of system input/output       */
+  int value;                 /*  value of system input/output      */
+  struct mf_type             /*  list of membership functions for  */
+    *membership_functions;   /*     this system input/output       */
+  struct io_type *next;      /*  pointer to next input/output      */
+  };
+/* Membership functions are associated with each system input and output. */
+struct mf_type{
+  char name[MAXNAME]; /* name of membership function (fuzzy set)    */
+  int value;          /* degree of membership or output strength    */
+  int point1;         /* leftmost x-axis point of mem. function     */
+  int point2;         /* rightmost x-axis point of mem. function    */
+  int slope1;         /* slope of left side of membership function  */
+  int slope2;         /* slope of right side of membership function */
+  struct mf_type *next;   /* pointer to next membership function    */
+  };
+/*  Each rule has an if side and a then side. Elements making up if side are
+pointers to antecedent values inside mf_type structure. Elements making up then
+side of rule are pointers to output strength values, also inside mf_type
+structure. Each rule structure contains a pointer to next rule in rule base. */
+struct rule_element_type{
+  int *value;                /* pointer to antecedent/output strength value */
+  struct rule_element_type *next; /* next antecedent/output element in rule */
+  };
+struct rule_type{
+  struct rule_element_type *if_side;     /* list of antecedents in rule */
+  struct rule_element_type *then_side;   /* list of outputs in rule     */
+  struct rule_type *next;                /* next rule in rule base      */
+  };
+struct rule_type *Rule_Base;             /* list of all rules in rule base */
+
+</a></pre><a name="listing1">
+</a><p><a name="listing1">
+
+</a><a name="listing2">
+<b>[LISTING TWO]</b>
+</a></p><pre><a name="listing2">
+main()
+{
+ initialize_system();
+ while(1){
+  get_system_inputs();
+  fuzzification();
+  rule_evaluation();
+  defuzzification();
+  put_system_outputs();
+  }
+}
+
+</a></pre><a name="listing2">
+</a><p><a name="listing2">
+
+</a><a name="listing3">
+<b>[LISTING THREE]</b>
+
+</a></p><pre><a name="listing3">
+/* Fuzzification--Degree of membership value is calculated for each membership
+function of each system input. Values correspond to antecedents in rules. */
+fuzzification()
+{
+ struct io_type *si;    /* system input pointer        */
+ struct mf_type *mf;    /* membership function pointer */
+for(si=System_Inputs; si != NULL; si=si-&gt;next)
+  for(mf=si-&gt;membership_functions; mf != NULL; mf=mf-&gt;next)
+    compute_degree_of_membership(mf,si-&gt;value);
+}
+/* Rule Evaluation--Each rule consists of a list of pointers to antecedents
+(if side), list of pointers to outputs (then side), and pointer to next rule
+in rule base. When a rule is evaluated, its antecedents are ANDed together,
+using a minimum function, to form strength of rule. Then strength is applied
+to each of listed rule outputs. If an output has already been assigned a rule
+strength, during current inference pass, a maximum function is used to
+determine which strength should apply. */
+rule_evaluation()
+{
+ struct rule_type *rule;
+ struct rule_element_type *ip;       /* pointer of antecedents  (if-parts)   */
+ struct rule_element_type *tp;       /* pointer to consequences (then-parts) */
+ int strength;                /* strength of  rule currently being evaluated */
+ for(rule=Rule_Base; rule != NULL; rule=rule-&gt;next){
+  strength = UPPER_LIMIT;                       /* max rule strength allowed */
+        /* process if-side of rule to determine strength */
+  for(ip=rule-&gt;if_side; ip != NULL; ip=ip-&gt;next)
+      strength = min(strength,*(ip-&gt;value));
+       /* process then-side of rule to apply strength */
+  for(tp=rule-&gt;then_side; tp != NULL; tp=tp-&gt;next)
+      *(tp-&gt;value) = max(strength,*(tp-&gt;value));
+  }
+}
+/* Defuzzification */
+defuzzification()
+{
+ struct io_type *so;    /* system output pointer                  */
+ struct mf_type *mf;    /* output membership function pointer     */
+ int sum_of_products;   /* sum of products of area &amp; centroid */
+ int sum_of_areas;     /* sum of shortend trapezoid area          */
+ int area;
+ int centroid;
+ /* compute a defuzzified value for each system output */
+for(so=System_Outputs; so != NULL; so=so-&gt;next){
+  sum_of_products = 0;
+  sum_of_areas = 0;
+  for(mf=so-&gt;membership_functions; mf != NULL; mf=mf-&gt;next){
+     area = compute_area_of_trapezoid(mf);
+     centroid = mf-&gt;point1 + (mf-&gt;point2 - mf-&gt;point1)/2;
+     sum_of_products += area * centroid;
+     sum_of_areas += area;
+     }
+  so-&gt;value = sum_of_products/sum_of_areas;   /* weighted average */
+  }
+}
+
+</a></pre><a name="listing3">
+</a><p><a name="listing3">
+
+</a><a name="listing4">
+<b>[LISTING FOUR]</b>
+
+</a></p><pre><a name="listing4">
+/* Compute Degree of Membership--Degree to which input is a member of mf is
+calculated as follows: 1. Compute delta terms to determine if input is inside
+or outside membership function. 2. If outside, then degree of membership is 0.
+Otherwise, smaller of delta_1 * slope1 and delta_2 * slope2 applies.
+3. Enforce upper limit. */
+compute_degree_of_membership(mf,input)
+struct mf_type *mf;
+int input;
+{
+ int delta_1;
+ int delta_2;
+ delta_1 = input - mf-&gt;point1;
+ delta_2 = mf-&gt;point2 - input;
+ if ((delta_1 &lt;= 0) || (delta_2 &lt;= 0))   /* input outside mem. function ?  */
+   mf-&gt;value = 0;                           /* then degree of membership is 0 */
+ else
+   mf-&gt;value = min( (mf-&gt;slope1*delta_1),(mf-&gt;slope2*delta_2) );
+   mf-&gt;value = min(mf-&gt;value,UPPER_LIMIT);  /* enforce upper limit */
+}
+/* Compute Area of Trapezoid--Each inference pass produces a new set of output
+strengths which affect the areas of trapezoidal membership functions used in
+center-of-gravity defuzzification. Area values must be recalculated with each
+pass. Area of trapezoid is h*(a+b)/2 where h=height=output_strength=mf-&gt;value
+b=base=mf-&gt;point2-mf-&gt;point1 a=top= must be derived from h,b, and slopes1&amp;2 */
+compute_area_of_trapezoid(mf)
+struct mf_type *mf;
+{
+ int run_1;
+ int run_2;
+ int base;
+ int top;
+ int area;
+ base = mf-&gt;point2 - mf-&gt;point1;
+ run_1 = mf-&gt;value/mf-&gt;slope1;
+ run_2 = mf-&gt;value/mf-&gt;slope2;
+ top = base - run_1 - run_2;
+ area = mf-&gt;value * ( base + top)/2;
+ return(area);
+}
+
+</a></pre><a name="listing4">
+</a></font><p><font face="arial" size="3"><a name="listing4">
+
+Greg Viot, 1993:
+Fuzzy logic in C,
+<cite></cite></a><a href="http://ddj.com/">Dr. Dobb's Journal</a>,
+February 1993
+(special issue on Cognitive Computing),
+pgs. 40-49 and 94.
+
+</font>
+
+
+</p></body></html>

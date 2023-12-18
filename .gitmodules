@@ -1,0 +1,9 @@
+[submodule "controls/bdsim"]
+	path = controls/bdsim
+	url = git@github.com:petercorke/bdsim.git
+[submodule "controls/nonlinear-audio-sysid"]
+	path = controls/nonlinear-audio-sysid
+	url = git@github.com:jagger2048/Nonlinear-audio-system-identification.git
+[submodule "controls/tiny-mpc"]
+	path = controls/tiny-mpc
+	url = git@github.com:TinyMPC/TinyMPC.git

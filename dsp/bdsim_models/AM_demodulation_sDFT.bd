@@ -11,7 +11,7 @@
             "block_type": "SCOPE",
             "title": "Scope(Input-cont)",
             "pos_x": 700.0,
-            "pos_y": 480.0,
+            "pos_y": 440.0,
             "width": 100,
             "height": 100,
             "flipped": false,
@@ -515,10 +515,10 @@
             "block_type": "SCOPE",
             "title": "Scope(Input-disc)",
             "pos_x": 900.0,
-            "pos_y": 480.0,
+            "pos_y": 440.0,
             "width": 100,
             "height": 100,
-            "flipped": false,
+            "flipped": true,
             "inputsNum": 1,
             "outputsNum": 0,
             "inputs": [
@@ -526,7 +526,7 @@
                     "id": 2295413972560,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 1,
+                    "position": 3,
                     "socket_type": 1
                 }
             ],
@@ -645,11 +645,11 @@
             "id": 2501697609488,
             "block_type": "GAIN",
             "title": "g_gain_a",
-            "pos_x": 1300.0,
-            "pos_y": 500.0,
+            "pos_x": 1240.0,
+            "pos_y": 440.0,
             "width": 100,
             "height": 100,
-            "flipped": false,
+            "flipped": true,
             "inputsNum": 1,
             "outputsNum": 1,
             "inputs": [
@@ -657,7 +657,7 @@
                     "id": 2501698284560,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 1,
+                    "position": 3,
                     "socket_type": 1
                 }
             ],
@@ -666,7 +666,7 @@
                     "id": 2501698278992,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 3,
+                    "position": 1,
                     "socket_type": 2
                 }
             ],
@@ -740,7 +740,7 @@
             "id": 2501685417168,
             "block_type": "FUNCTION",
             "title": "unit_delay(1)_a",
-            "pos_x": 1300.0,
+            "pos_x": 1240.0,
             "pos_y": 300.0,
             "width": 100,
             "height": 100,
@@ -803,10 +803,10 @@
             "block_type": "SUM",
             "title": "Sum Block 2",
             "pos_x": 1100.0,
-            "pos_y": 500.0,
+            "pos_y": 520.0,
             "width": 100,
             "height": 100,
-            "flipped": false,
+            "flipped": true,
             "inputsNum": 2,
             "outputsNum": 1,
             "inputs": [
@@ -814,14 +814,14 @@
                     "id": 2501698625296,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 1,
+                    "position": 3,
                     "socket_type": 1
                 },
                 {
                     "id": 2501698617616,
                     "index": 1,
                     "multi_wire": true,
-                    "position": 1,
+                    "position": 3,
                     "socket_type": 1
                 }
             ],
@@ -830,7 +830,7 @@
                     "id": 2501698622544,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 3,
+                    "position": 1,
                     "socket_type": 2
                 }
             ],
@@ -853,7 +853,7 @@
             "id": 2501698526864,
             "block_type": "FUNCTION",
             "title": "unit_delay(1)_b",
-            "pos_x": 1500.0,
+            "pos_x": 1380.0,
             "pos_y": 300.0,
             "width": 100,
             "height": 100,
@@ -915,11 +915,11 @@
             "id": 2501698525008,
             "block_type": "GAIN",
             "title": "g_gain_b",
-            "pos_x": 1500.0,
-            "pos_y": 500.0,
+            "pos_x": 1380.0,
+            "pos_y": 540.0,
             "width": 100,
             "height": 100,
-            "flipped": false,
+            "flipped": true,
             "inputsNum": 1,
             "outputsNum": 1,
             "inputs": [
@@ -927,7 +927,7 @@
                     "id": 2501698683984,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 1,
+                    "position": 3,
                     "socket_type": 1
                 }
             ],
@@ -936,7 +936,7 @@
                     "id": 2501699159312,
                     "index": 0,
                     "multi_wire": true,
-                    "position": 3,
+                    "position": 1,
                     "socket_type": 2
                 }
             ],
@@ -959,8 +959,8 @@
             "id": 2501699500432,
             "block_type": "SCOPE",
             "title": "Filter Internal",
-            "pos_x": 1700.0,
-            "pos_y": 500.0,
+            "pos_x": 1600.0,
+            "pos_y": 540.0,
             "width": 100,
             "height": 100,
             "flipped": false,
@@ -1027,7 +1027,7 @@
             "id": 2501699500560,
             "block_type": "ZOH",
             "title": "g_output_latch",
-            "pos_x": 1700.0,
+            "pos_x": 1600.0,
             "pos_y": 300.0,
             "width": 100,
             "height": 100,
@@ -1725,33 +1725,8 @@
             "start_socket": 2501684929168,
             "end_socket": 2501698622544,
             "wire_type": 3,
-            "custom_routing": true,
-            "wire_coordinates": [
-                [
-                    1100.0,
-                    360.0
-                ],
-                [
-                    1080.0,
-                    360.0
-                ],
-                [
-                    1080.0,
-                    460.0
-                ],
-                [
-                    1220.0,
-                    460.0
-                ],
-                [
-                    1220.0,
-                    540.0
-                ],
-                [
-                    1200.0,
-                    540.0
-                ]
-            ]
+            "custom_routing": false,
+            "wire_coordinates": []
         },
         {
             "id": 2501698624016,
@@ -1774,33 +1749,8 @@
             "start_socket": 2501698374352,
             "end_socket": 2501698284560,
             "wire_type": 3,
-            "custom_routing": true,
-            "wire_coordinates": [
-                [
-                    1300.0,
-                    540.0
-                ],
-                [
-                    1280.0,
-                    540.0
-                ],
-                [
-                    1280.0,
-                    460.0
-                ],
-                [
-                    1440.0,
-                    460.0
-                ],
-                [
-                    1440.0,
-                    340.0
-                ],
-                [
-                    1400.0,
-                    340.0
-                ]
-            ]
+            "custom_routing": false,
+            "wire_coordinates": []
         },
         {
             "id": 2501699261840,
@@ -1810,27 +1760,19 @@
             "custom_routing": true,
             "wire_coordinates": [
                 [
-                    1500.0,
-                    540.0
-                ],
-                [
                     1480.0,
-                    540.0
+                    580.0
                 ],
                 [
-                    1480.0,
-                    460.0
+                    1540.0,
+                    580.0
                 ],
                 [
-                    1620.0,
-                    460.0
-                ],
-                [
-                    1620.0,
+                    1540.0,
                     340.0
                 ],
                 [
-                    1600.0,
+                    1480.0,
                     340.0
                 ]
             ]
@@ -1839,47 +1781,6 @@
             "id": 2501699271888,
             "start_socket": 2501698374352,
             "end_socket": 2501699128976,
-            "wire_type": 3,
-            "custom_routing": false,
-            "wire_coordinates": []
-        },
-        {
-            "id": 2501699256912,
-            "start_socket": 2501698617616,
-            "end_socket": 2501698278992,
-            "wire_type": 3,
-            "custom_routing": true,
-            "wire_coordinates": [
-                [
-                    1100.0,
-                    560.0
-                ],
-                [
-                    1080.0,
-                    560.0
-                ],
-                [
-                    1080.0,
-                    670.0
-                ],
-                [
-                    1420.0,
-                    670.0
-                ],
-                [
-                    1420.0,
-                    540.0
-                ],
-                [
-                    1400.0,
-                    540.0
-                ]
-            ]
-        },
-        {
-            "id": 2501699336464,
-            "start_socket": 2501699159312,
-            "end_socket": 2501698625296,
             "wire_type": 3,
             "custom_routing": false,
             "wire_coordinates": []
@@ -2104,6 +2005,22 @@
                     -320.0
                 ]
             ]
+        },
+        {
+            "id": 1822432318032,
+            "start_socket": 2501699159312,
+            "end_socket": 2501698617616,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
+        },
+        {
+            "id": 1822331269008,
+            "start_socket": 2501698278992,
+            "end_socket": 2501698625296,
+            "wire_type": 3,
+            "custom_routing": false,
+            "wire_coordinates": []
         }
     ],
     "labels": [
@@ -2155,8 +2072,8 @@
         {
             "id": 2501697649104,
             "text": "Very Basic Approximation of a SAR ADC",
-            "pos_x": 620.0,
-            "pos_y": 685.0,
+            "pos_x": 605.0,
+            "pos_y": 595.0,
             "width": 350,
             "height": 30,
             "fill_color": [
@@ -2170,8 +2087,8 @@
         {
             "id": 2501617712080,
             "text": "given the limitations of vanilla bdedit/bdsim",
-            "pos_x": 620.0,
-            "pos_y": 735.0,
+            "pos_x": 605.0,
+            "pos_y": 635.0,
             "width": 365,
             "height": 30,
             "fill_color": [
@@ -2291,7 +2208,7 @@
             "pos_x": 560.0,
             "pos_y": 160.0,
             "width": 480.0,
-            "height": 880.0,
+            "height": 540.0,
             "color": [
                 255,
                 255,
@@ -2302,8 +2219,8 @@
             "id": 2501630152912,
             "pos_x": 1060.0,
             "pos_y": 160.0,
-            "width": 780.0,
-            "height": 880.0,
+            "width": 680.0,
+            "height": 780.0,
             "color": [
                 85,
                 85,
